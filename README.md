@@ -17,16 +17,51 @@ To implement univariate Linear Regression to fit a straight line using least squ
 6. Obtain the straight line equation Y=mX+b and plot the scatterplot.
 
 ## Program:
-```
-/*
-Program to implement univariate Linear Regression to fit a straight line using least squares.
+``
 Developed by: monisha D
-RegisterNumber:  
-*/
-```
+RegisterNumber: 25007487
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Input arrays safely using input strings
+x = np.array(list(map(float, input("Enter x values separated by commas: ").split(','))))
+y = np.array(list(map(float, input("Enter y values separated by commas: ").split(','))))
+
+# Calculating means
+x_mean = np.mean(x)
+y_mean = np.mean(y)
+
+# Calculating slope (m) and intercept (b) using the formula
+num = np.sum((x - x_mean) * (y - y_mean))
+denom = np.sum((x - x_mean) ** 2)
+m = num / denom
+b = y_mean - m * x_mean
+
+print("Slope (m):", m)
+print("Intercept (b):", b)
+
+# Predict y values
+y_predicted = m * x + b
+print("Predicted y values:", y_predicted)
+
+# Plotting
+plt.scatter(x, y, label="Original Data")
+plt.plot(x, y_predicted, color='red', label="Best Fit Line")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Linear Regression")
+plt.legend()
+plt.grid(True)
+plt.show()
 
 ## Output:
-![best fit line](sam.png)
+Enter x values separated by commas: 1,2,3,4,5
+Enter y values separated by commas: 2,4,6,8,10
+Slope (m): 2.0
+Intercept (b): 0.0
+Predicted y values: [ 2.  4.  6.  8. 10.]
+<img width="712" height="554" alt="{5936126C-D910-4115-9825-6D4F6D61CC82}" src="https://github.com/user-attachments/assets/7a80a1e5-4630-45ba-acd0-d230de76e3a3" />
+
 
 
 ## Result:
